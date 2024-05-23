@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">exeplorer</string>
-    <string name="title_activity_main">exeplorer</string>
-    <string name="package_name">com.windoge98.mobile</string>
-    <string name="custom_url_scheme">com.windoge98.mobile</string>
-</resources>
