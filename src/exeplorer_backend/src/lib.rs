@@ -60,7 +60,7 @@ struct AccountInfo {
     subaccount: Option<Vec<u8>>,
 }
 
-#[ic_cdk::query]
+#[ic_cdk::update]
 async fn icrc1_balance_of(account: Account) -> CallResult<(Balance,)> {
     let response: CallResult<(Balance,)> = ic_cdk::call(
         Principal::from_text(TOKEN_CANISTER_ID).unwrap(),
@@ -71,7 +71,7 @@ async fn icrc1_balance_of(account: Account) -> CallResult<(Balance,)> {
     response
 }
 
-#[ic_cdk::query]
+#[ic_cdk::update]
 async fn icrc1_total_supply() -> CallResult<(Balance,)> {
     let response: CallResult<(Balance,)> = ic_cdk::call(
         Principal::from_text(TOKEN_CANISTER_ID).unwrap(),
@@ -82,7 +82,7 @@ async fn icrc1_total_supply() -> CallResult<(Balance,)> {
     response
 }
 
-#[ic_cdk::query]
+#[ic_cdk::update]
 async fn get_transactions(start: Nat, length: Nat) -> CallResult<(TransactionRange,)> {
     let response: CallResult<(TransactionRange,)> = ic_cdk::call(
         Principal::from_text(TOKEN_CANISTER_ID).unwrap(),
@@ -93,7 +93,7 @@ async fn get_transactions(start: Nat, length: Nat) -> CallResult<(TransactionRan
     response
 }
 
-#[ic_cdk::query]
+#[ic_cdk::update]
 async fn get_token_info() -> Result<(String, String, Nat, u8, Nat, Nat), String> {
     let name: CallResult<(String,)> = ic_cdk::call(
         Principal::from_text(TOKEN_CANISTER_ID).unwrap(),
@@ -151,7 +151,7 @@ async fn get_token_info() -> Result<(String, String, Nat, u8, Nat, Nat), String>
     }
 }
 
-#[ic_cdk::query]
-fn greet(name: String) -> String {
-    format!("Hello, {}!", name)
-}
+// ----------------------
+// candid interface
+// ----------------------
+ic_cdk::export_candid!();
